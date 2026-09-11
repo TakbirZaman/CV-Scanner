@@ -24,13 +24,11 @@ from app.models.organization import Organization, Team
 from app.models.user import User
 from app.core.security import hash_password
 
-DEFAULT_PASSWORD = "DemoPass123!"
-DATABASE_URL = "sqlite+aiosqlite:///./dev.db"
-# If run from project root, support ./backend/dev.db fallback
+DEFAULT_PASSWORD = "admin123"
 import os
-if not Path(ROOT / "dev.db").exists() and Path(ROOT.parent / "backend" / "dev.db").exists():
-    DATABASE_URL = f"sqlite+aiosqlite:///{ROOT.parent / 'backend' / 'dev.db'}"
-# Allow override via env
+# Always use backend/dev.db absolute path (works from any cwd); allow env override
+_default_db = (ROOT / "dev.db").resolve()
+DATABASE_URL = f"sqlite+aiosqlite:///{_default_db.as_posix()}"
 if os.getenv("DATABASE_URL"):
     DATABASE_URL = os.getenv("DATABASE_URL")
 

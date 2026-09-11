@@ -48,7 +48,7 @@ export default function LoginPage() {
     finally { setLoading(false); }
   }
 
-  function fillDemo(){ setEmail("alice@acme.com"); setPassword("supersecret123"); toast("Demo credentials filled — just hit Sign in", "info"); }
+  function fillDemo(){ setEmail("sarah.chen@novatech.io"); setPassword("admin123"); toast("Demo credentials filled — just hit Sign in", "info"); }
 
   return (
     <AuthSplitLayout title="Welcome back" subtitle="Sign in to your organization. Friendly by default, secure by design — your team is one sign-in away.">
